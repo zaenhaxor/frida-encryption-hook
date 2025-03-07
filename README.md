@@ -16,5 +16,6 @@ Ideal for **penetration testing, reverse engineering, and security research.**
 
 ## Run the script and analyze
 After installing Frida, run the script against the target application: 
+```sh
 **frida -U -f <package name> -l /path/enc.js --no-auto-reload
 ---
