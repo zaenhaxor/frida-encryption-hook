@@ -1,7 +1,7 @@
 # Frida AES Hook - Bypassing encryption in android apps
 
-A **Frida script** for intercepting and analyzing **AES encryption** in Android applications in real time.  
-Ideal for **penetration testing, reverse engineering, and security research.**  
+A **frida script** for intercepting and analyzing **AES encryption** in Android applications in real time.  
+Ideal for **penetration testing, reverse engineering, and security researcher.**  
 
 ---
 
@@ -20,15 +20,12 @@ After installing Frida, run the script against the target application:
 frida -U -f <package name> -l /path/enc.js --no-auto-reload
 ```
 
-# How the Script Works
-
+## How the Script Works
 This script hooks into Java’s cryptographic functions and intercepts key operations like:
-
-- `Cipher.init(mode, key, params)` → Captures the encryption/decryption mode, AES key, and IV before they are used.
-- `Cipher.doFinal(data)` → Logs plaintext before encryption and ciphertext after decryption.
-- `SecretKeySpec` constructor → Extracts AES key during initialization.
-- `IvParameterSpec` constructor → Retrieves IV when it is generated.
-
+- `Cipher.init(mode, key, params)` => Captures the encryption/decryption mode, AES key, and IV before they are used.
+- `Cipher.doFinal(data)` => Logs plaintext before encryption and ciphertext after decryption.
+- `SecretKeySpec` constructor => Extracts AES key during initialization.
+- `IvParameterSpec` constructor => Retrieves IV when it is generated.
 By hooking into these methods, we can monitor how encryption is performed without modifying the app’s source code.
 
 ## Example Output
@@ -41,20 +38,16 @@ Key : b'Secret_Key'
 IV  : b'Iv'
 data: b'plaintext'
 ```
-
 During decryption:
-
 ```sh
 Mode: decrypt
 Key : b'Secret_Key'
 IV  : b'Iv'
 data: b'ciphertext'
 ```
-
 This output provides valuable insights into how the application handles encryption, helping in security analysis or debugging.
 
 ## Reference
-
 - **Frida**  
   https://codeshare.frida.re/@dzonerzy/aesinfo/
 
