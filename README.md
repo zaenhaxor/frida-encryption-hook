@@ -18,6 +18,8 @@ Ideal for **penetration testing, reverse engineering, and security research.**
 After installing Frida, run the script against the target application: 
 ```sh
 **frida -U -f <package name> -l /path/enc.js --no-auto-reload
+```
+
 # How the Script Works
 
 This script hooks into Java’s cryptographic functions and intercepts key operations like:
@@ -33,7 +35,7 @@ By hooking into these methods, we can monitor how encryption is performed withou
 
 Once running, the script will log encryption-related data like this:
 
-```
+```sh
 Mode: encrypt
 Key : b'SECRET_AES_KEY_HERE'
 IV  : b'INITIALIZATION_VECTOR_HERE'
@@ -42,7 +44,7 @@ data: b'PLAINTEXT_BEFORE_ENCRYPTION'
 
 During decryption:
 
-```
+```sh
 Mode: decrypt
 Key : b'SECRET_AES_KEY_HERE'
 IV  : b'INITIALIZATION_VECTOR_HERE'
