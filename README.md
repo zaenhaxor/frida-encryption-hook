@@ -17,7 +17,7 @@ Ideal for **penetration testing, reverse engineering, and security research.**
 ## Run the script and analyze
 After installing Frida, run the script against the target application: 
 ```sh
-**frida -U -f <package name> -l /path/enc.js --no-auto-reload
+frida -U -f <package name> -l /path/enc.js --no-auto-reload
 ```
 
 # How the Script Works
@@ -37,18 +37,18 @@ Once running, the script will log encryption-related data like this:
 
 ```sh
 Mode: encrypt
-Key : b'SECRET_AES_KEY_HERE'
-IV  : b'INITIALIZATION_VECTOR_HERE'
-data: b'PLAINTEXT_BEFORE_ENCRYPTION'
+Key : b'Secret_Key'
+IV  : b'Iv'
+data: b'plaintext'
 ```
 
 During decryption:
 
 ```sh
 Mode: decrypt
-Key : b'SECRET_AES_KEY_HERE'
-IV  : b'INITIALIZATION_VECTOR_HERE'
-data: b'CIPHERTEXT_BEFORE_DECRYPTION'
+Key : b'Secret_Key'
+IV  : b'Iv'
+data: b'ciphertext'
 ```
 
 This output provides valuable insights into how the application handles encryption, helping in security analysis or debugging.
