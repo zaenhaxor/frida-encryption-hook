@@ -26,7 +26,8 @@ This script hooks into java’s cryptographic functions and intercepts key opera
 - `Cipher.doFinal(data)` => logs plaintext before encryption and ciphertext after decryption.
 - `SecretKeySpec` constructor => extracts AES key during initialization.
 - `IvParameterSpec` constructor => retrieves IV when it is generated.
-By hooking into these methods, we can monitor how encryption is performed without modifying the app’s source code.
+  
+By hooking into these methods, it is possible to monitor how encryption is performed without modifying the app’s source code.
 
 ## Example output
 Once running, the script will log encryption-related data like this:
