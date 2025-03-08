@@ -20,18 +20,16 @@ After installing Frida, run the script against the target application:
 frida -U -f <package name> -l /path/enc.js --no-auto-reload
 ```
 
-## How the Script Works
-This script hooks into Java’s cryptographic functions and intercepts key operations like:
-- `Cipher.init(mode, key, params)` => Captures the encryption/decryption mode, AES key, and IV before they are used.
-- `Cipher.doFinal(data)` => Logs plaintext before encryption and ciphertext after decryption.
-- `SecretKeySpec` constructor => Extracts AES key during initialization.
-- `IvParameterSpec` constructor => Retrieves IV when it is generated.
+## How the script works ?
+This script hooks into java’s cryptographic functions and intercepts key operations like:
+- `Cipher.init(mode, key, params)` => captures the encryption/decryption mode, AES key, and IV before they are used.
+- `Cipher.doFinal(data)` => logs plaintext before encryption and ciphertext after decryption.
+- `SecretKeySpec` constructor => extracts AES key during initialization.
+- `IvParameterSpec` constructor => retrieves IV when it is generated.
 By hooking into these methods, we can monitor how encryption is performed without modifying the app’s source code.
 
-## Example Output
-
+## Example output
 Once running, the script will log encryption-related data like this:
-
 ```sh
 Mode: encrypt
 Key : b'Secret_Key'
